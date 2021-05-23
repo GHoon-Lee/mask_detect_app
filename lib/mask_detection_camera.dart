@@ -130,8 +130,8 @@ class _FaceDetectionFromLiveCameraState
                 numResultsPerClass: 2,
               ).then(
                     (recognitions) async{
-                      //대상이 80% 이상의 확률로 사람으로 인식될 경우 이미지 추출 및 온도 체크 시작
-                  if (recognitions[0]["detectedClass"] == 'person' && recognitions[0]["confidenceInClass"]>=0.6) {
+                      //대상이 80% 이상의 확률로 사람으로 인식될 경우 이미지 추출 및 온도 체크 시
+                  if (recognitions[0]["detectedClass"] == 'person' && recognitions[0]["confidenceInClass"]>=0.7) {
                     final captureImage = img;
                     setRecognitions(1);
                     await Future.delayed(const Duration(milliseconds: 800));
@@ -160,8 +160,7 @@ class _FaceDetectionFromLiveCameraState
 
 // 온도 측정(시나리오)
   Future<void> checkTemp() async {
-       //temp = (Random().nextInt(15)+365)/10;
-       temp = 36.4;
+       temp = (Random().nextInt(15)+365)/10;
        tempFlag = true;
        if(maskFlag == true && tempFlag == true) {
          checkCondition();
@@ -172,8 +171,7 @@ class _FaceDetectionFromLiveCameraState
   Future<void> checkMask(img) async{
     final result = await reko.detectFaces(img);
     print(result);
-    if (count%3 < 2) mask = false;
-    else mask = true;
+    mask = true;
     count++;
     maskFlag = true;
     if(tempFlag==true && maskFlag == true){
@@ -191,16 +189,19 @@ class _FaceDetectionFromLiveCameraState
     if (temp >=37.5){
       _condition = 2;
       setRecognitions(_condition);
+      await Future.delayed(const Duration(milliseconds: 800));
     }
     else{
       if (mask == true){
         pn = "P";
         _condition =4;
         setRecognitions(_condition);
+        await Future.delayed(const Duration(milliseconds: 800));
       }
       else{
         _condition = 3;
         setRecognitions(_condition);
+        await Future.delayed(const Duration(milliseconds: 800));
       }
     }
 
@@ -221,7 +222,7 @@ class _FaceDetectionFromLiveCameraState
     final date = DateTime.now();
 
     var resultDate = DateFormat("yyyyMMdd").format(date);
-    var resultTime = DateFormat("hh:mm").format(date);
+    var resultTime = DateFormat("HH:mm").format(date);
     print(resultTime);
     print(resultDate);
 
