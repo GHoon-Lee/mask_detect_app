@@ -131,7 +131,7 @@ class _FaceDetectionFromLiveCameraState
               ).then(
                     (recognitions) async{
                       //대상이 80% 이상의 확률로 사람으로 인식될 경우 이미지 추출 및 온도 체크 시
-                  if (recognitions[0]["detectedClass"] == 'person' && recognitions[0]["confidenceInClass"]>=0.7) {
+                  if (recognitions[0]["detectedClass"] == 'person' && recognitions[0]["confidenceInClass"]>=0.8) {
                     final captureImage = img;
                     setRecognitions(1);
                     await Future.delayed(const Duration(milliseconds: 800));
@@ -169,10 +169,9 @@ class _FaceDetectionFromLiveCameraState
   }
 // 마스크 체크(시나리오)
   Future<void> checkMask(img) async{
-    final result = await reko.detectFaces(img);
-    print(result);
-    mask = true;
-    count++;
+    // final result = await reko.detectFaces(img);
+    // print(result);
+    mask = Random().nextBool();
     maskFlag = true;
     if(tempFlag==true && maskFlag == true){
       checkCondition();
