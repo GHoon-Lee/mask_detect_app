@@ -12,6 +12,6 @@ COVID-19 이 지속되면서 마스크를 쓰고 생활하는 것이 일상이 �
 ## 사용 기술
 
 - Flutter
-- AWS Amplify
+- AWS Amplify, S3, DynamoDB, QuickSight
 - tflite (yolov4 model)
-- AWS S3, DynamoDB, QuickSight
+
