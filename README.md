@@ -1,16 +1,17 @@
-# maskapp_2
+# Mask Detect App
 
-A new Flutter project.
+Flutter를 사용한 Mask Detect App
 
-## Getting Started
+## 프로젝트 계획 이유
 
-This project is a starting point for a Flutter application.
+COVID-19 이 지속되면서 마스크를 쓰고 생활하는 것이 일상이 되었습니다.
+하지만 실내에 입장할 때 언제나 체온을 측정하고 있지만, 마스크 착용 여부에 대해서는 확인하지 않고 있습니다.
+사회적 거리두기, 마스크 착용과 같은 생활방역이 중요한 시기이기에 실내에 입장할 때에도 체온측정과 함께 방문자가 마스크를 제대로 착용했는지 확인해줄 수 있다면 좋겠다는 생각에 어플을 제작하게 되었습니다.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 사용 기술
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- AWS Amplify
+- tflite (yolov4 model)
+- AWS S3, DynamoDB, QuickSight
